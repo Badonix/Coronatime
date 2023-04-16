@@ -23,7 +23,7 @@
                 <button type='submit'
                     class='w-full px-6 py-4 bg-green-500 text-white cursor-pointer rounded-lg mt-6'>LOG
                     IN</button>
-                <p class='mt-4 text-base text-zinc-500 text-center'>Don't have an account? <a href='#'
+                <p class='mt-4 text-base text-zinc-500 text-center'>Don't have an account? <a href='/signup'
                         class='text-slate-950 font-semibold'>Sign up for free
                     </a> </p>
             </form>
