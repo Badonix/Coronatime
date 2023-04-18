@@ -26,3 +26,7 @@ Route::get('/signup', function(){
 Route::get('/confirm', function(){
     return view('confirm');
 });
+
+Route::get('/reset', function(){
+    return view('reset');
+});
