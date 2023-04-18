@@ -30,3 +30,7 @@ Route::get('/confirm', function(){
 Route::get('/reset', function(){
     return view('reset');
 });
+
+Route::get("/setpassword", function(){
+    return view('setpassword');
+});

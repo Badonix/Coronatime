@@ -11,9 +11,13 @@
                     <x-form.label>Email</x-form.label>
                     <x-form.input placeholder="Enter your email" />
                 </div>
+                <div class='w-full'>
+                    <x-form.label>Repeat password</x-form.label>
+                    <x-form.input placeholder="Repeat password" />
+                </div>
             </div>
             <button type='submit'
-                class='w-full px-6 py-4 bg-green-500 font-bold text-white cursor-pointer rounded-lg'>RESET PASSWORD
+                class='w-full px-6 py-4 bg-green-500 font-bold text-white cursor-pointer rounded-lg'>SAVE CHANGES
             </button>
         </form>
     </div>
