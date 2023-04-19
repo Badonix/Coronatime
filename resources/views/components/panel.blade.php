@@ -1,3 +1,4 @@
+@props(['name', 'title'])
 <nav class='px-6 py-4 lg:px-28 lg:py-5 flex items-center justify-between'>
     <img src="{{ asset('assets/landing-logo.png') }}" class='w-32 sm:w-40' />
     <div class='items-center gap-12 hidden sm:flex'>
@@ -53,15 +54,19 @@
     </div>
 </nav>
 
-<div class='px-4 lg:px-28 mt-10'>
-    <h2 class='font-extrabold text-2xl'>Worldwide Statistics</h2>
+<div class='{{ $name == 'country' ? 'px-0' : 'px-4' }} sm:px-4 lg:px-28 mt-10'>
 
-    <div class='flex items-center gap-16 mt-10'>
-        <div class='border-b-2 py-4 border-b-black'>
-            <p class='font-bold'>Worldwide</p>
-        </div>
-        <div>
-            <p>By country</p>
+    <div class="{{ $name == 'country' ? 'px-4' : 'px-0' }}">
+
+        <h2 class='font-extrabold text-2xl'>{{ $title }}</h2>
+
+        <div class='flex items-center gap-6 sm:gap-16 mt-10'>
+            <div class='py-4 {{ $name == 'worldwide' ? 'border-b-2 border-b-black' : '' }}'>
+                <a href='/worldwide' class='{{ $name == 'worldwide' ? 'font-bold' : '' }}'>Worldwide</a>
+            </div>
+            <div class='py-4 {{ $name == 'country' ? 'border-b-2 border-b-black' : '' }}'>
+                <a href='/countries' class='{{ $name == 'country' ? 'font-bold' : '' }}'>By country</a>
+            </div>
         </div>
     </div>
 

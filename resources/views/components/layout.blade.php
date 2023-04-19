@@ -10,7 +10,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class='h-screen'>
+<body class='h-screen max-w-screen overflow-x-hidden'>
     {{ $slot }}
 </body>
 

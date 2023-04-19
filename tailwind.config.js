@@ -13,7 +13,10 @@ module.exports = {
             maxWidth: {
                 24: "24px",
             },
+            maxHeight: {
+                600: "600px",
+            },
         },
     },
-    plugins: [require("@tailwindcss/forms")],
+    plugins: [require("@tailwindcss/forms"), require("tailwind-scrollbar")],
 };

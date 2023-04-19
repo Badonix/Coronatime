@@ -38,3 +38,7 @@ Route::get("/setpassword", function(){
 Route::get('/worldwide', function(){
     return view('worldwide');
 });
+
+Route::get('/countries', function(){
+    return view('countries');
+});

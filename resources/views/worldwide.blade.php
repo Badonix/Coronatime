@@ -1,5 +1,5 @@
 <x-layout>
-    <x-panel>
+    <x-panel name='worldwide' title='Worldwide statistics'>
         <div class='mt-6 lg:md-10 grid grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-5'>
             <div class='flex justify-center items-center col-span-2 lg:col-span-1 w-full'>
                 <div
