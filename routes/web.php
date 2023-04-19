@@ -34,3 +34,7 @@ Route::get('/reset', function(){
 Route::get("/setpassword", function(){
     return view('setpassword');
 });
+
+Route::get('/worldwide', function(){
+    return view('worldwide');
+});

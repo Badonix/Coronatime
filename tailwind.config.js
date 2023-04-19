@@ -6,7 +6,14 @@ module.exports = {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            minWidth: {
+                24: "24px",
+            },
+            maxWidth: {
+                24: "24px",
+            },
+        },
     },
     plugins: [require("@tailwindcss/forms")],
 };
