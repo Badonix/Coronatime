@@ -24,8 +24,9 @@
                 </div>
                 <button type='submit'
                     class='w-full px-6 py-4 bg-green-500 font-bold text-white cursor-pointer rounded-lg mt-6'>{{ __('login.login') }}</button>
-                <p class='mt-4 text-base text-zinc-500 text-center'>{{ __('login.no_account') }}<a href='/signup'
-                        class='text-slate-950 font-semibold'> {{ __('login.signup') }} </a> </p>
+                <p class='mt-4 text-base text-zinc-500 text-center'>{{ __('login.no_account') }}<a
+                        href='{{ route('signup') }}' class='text-slate-950 font-semibold'> {{ __('login.signup') }}
+                    </a> </p>
             </form>
         </div>
         <img src="{{ asset('assets/cover.jpg') }}" class='hidden lg:block object-cover' />

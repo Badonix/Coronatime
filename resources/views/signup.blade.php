@@ -27,7 +27,7 @@
                 <button type='submit'
                     class='w-full px-6 py-4 bg-green-500 text-white font-bold cursor-pointer rounded-lg mt-6'>{{ __('signup.signup') }}</button>
                 <p class='mt-4 text-base text-zinc-500 text-center'>{{ __('signup.already_account') }} <a
-                        href='/login' class='text-slate-950 font-semibold'>{{ __('signup.login') }}
+                        href='{{ route('login') }}' class='text-slate-950 font-semibold'>{{ __('signup.login') }}
                     </a> </p>
             </form>
         </div>

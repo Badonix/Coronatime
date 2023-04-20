@@ -66,11 +66,11 @@
 
         <div class='flex items-center gap-6 sm:gap-16 mt-10'>
             <div class='py-4 {{ $name == 'worldwide' ? 'border-b-2 border-b-black' : '' }}'>
-                <a href='/worldwide'
+                <a href='{{ route('worldwide') }}'
                     class='{{ $name == 'worldwide' ? 'font-bold' : '' }}'>{{ __('panel.worldwide') }}</a>
             </div>
             <div class='py-4 {{ $name == 'country' ? 'border-b-2 border-b-black' : '' }}'>
-                <a href='/countries'
+                <a href='{{ route('countries') }}'
                     class='{{ $name == 'country' ? 'font-bold' : '' }}'>{{ __('panel.countries') }}</a>
             </div>
         </div>

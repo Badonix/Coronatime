@@ -8,5 +8,8 @@ return [
     'password' => 'New password',
     "password_placeholder" => "Enter new password",
     'repeat' => "Repeat password",
-    'save' => "SAVE CHANGES"
+    'save' => "SAVE CHANGES",
+    'success_message' => "Your password has been updeted successfully",
+    'sign_in' => "SIGN IN"
+
 ];
