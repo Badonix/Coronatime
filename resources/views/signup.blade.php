@@ -6,10 +6,11 @@
                 <h2 class='font-bold lg:text-2xl text-xl lg:mt-0'>{{ __('signup.title') }}</h2>
                 <p class='text-base lg:text-xl text-zinc-500 mt-2 lg:mt-4'>{{ __('signup.subtitle') }}</p>
             </div>
-            <form class='lg:w-96'>
+            <form class='lg:w-96 pb-4'>
                 <div class='mt-6 lg:mt-4'>
                     <x-form.label>{{ __('signup.username') }}</x-form.label>
                     <x-form.input placeholder="{{ __('signup.username_placeholder') }}" />
+                    <p class='hidden sm:block text-sm text-zinc-500 mt-2'>{{ __('signup.min_length') }}</p>
                 </div>
                 <div class='mt-6 lg:mt-4'>
                     <x-form.label>{{ __('signup.email') }}</x-form.label>

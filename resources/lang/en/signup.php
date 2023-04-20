@@ -14,4 +14,5 @@ return [
     'signup' => "SIGN UP",
     "already_account" => "Already have an account?",
     "login" => "Log in",
+    'min_length' => "Username should be unique, min 3 symbols"
 ];
