@@ -12,7 +12,19 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('localization')->group(function(){
+    Route::view('/', 'login');
+    Route::view('/login', 'login')->name('login');
+    Route::view('/signup',"signup")->name('signup');
+    Route::view('/confirm','confirm');
+    Route::view('/reset','reset');
+    Route::view("/setpassword",'setpassword');
+    Route::view('/worldwide','worldwide')->name('worldwide');
+    Route::view('/countries','countries')->name('countries');
+    Route::view('/reseted', 'reseted');
 });
+
+Route::get('/setlocale/{locale}', function($locale){
+    session(['locale' => $locale]);
+    return back();
+})->name('setlocale');
