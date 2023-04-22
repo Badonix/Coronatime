@@ -6,23 +6,35 @@
                 <h2 class='font-bold lg:text-2xl text-xl lg:mt-0'>{{ __('signup.title') }}</h2>
                 <p class='text-base lg:text-xl text-zinc-500 mt-2 lg:mt-4'>{{ __('signup.subtitle') }}</p>
             </div>
-            <form class='lg:w-96 pb-4'>
+            <form action="{{ route('signup.store') }}" method="POST" class='lg:w-96 pb-4'>
+                @csrf
                 <div class='mt-6 lg:mt-4'>
                     <x-form.label>{{ __('signup.username') }}</x-form.label>
-                    <x-form.input placeholder="{{ __('signup.username_placeholder') }}" />
-                    <p class='hidden sm:block text-sm text-zinc-500 mt-2'>{{ __('signup.min_length') }}</p>
+                    <x-form.input :value="old('username')" name="username"
+                        placeholder="{{ __('signup.username_placeholder') }}" />
+                    <x-form.error name='username' />
+                    @if (!$errors->has('username'))
+                        <p class='hidden sm:block text-sm text-zinc-500 mt-2'>{{ __('signup.min_length') }}</p>
+                    @endif
                 </div>
                 <div class='mt-6 lg:mt-4'>
                     <x-form.label>{{ __('signup.email') }}</x-form.label>
-                    <x-form.input placeholder="{{ __('signup.email_placeholder') }}" />
+                    <x-form.input :value="old('email')" name="email" placeholder="{{ __('signup.email_placeholder') }}" />
+                    <x-form.error name='email' />
                 </div>
                 <div class='mt-6 lg:mt-4'>
                     <x-form.label>{{ __('signup.password') }}</x-form.label>
-                    <x-form.input type='password' placeholder="{{ __('signup.password_placeholder') }}" />
+                    <x-form.input :value="old('password')" name="password" type='password'
+                        placeholder="{{ __('signup.password_placeholder') }}" />
+                    <x-form.error name='password' />
+
                 </div>
                 <div class='mt-6 lg:mt-4'>
                     <x-form.label>{{ __('signup.repeat_password') }}</x-form.label>
-                    <x-form.input type='password' placeholder="{{ __('signup.repeat_password_placeholder') }}" />
+                    <x-form.input :value="old('password_confirmation')" name="password_confirmation" type='password'
+                        placeholder="{{ __('signup.repeat_password_placeholder') }}" />
+                    <x-form.error name='password_confirmation' />
+
                 </div>
                 <button type='submit'
                     class='w-full px-6 py-4 bg-green-500 text-white font-bold cursor-pointer rounded-lg mt-6'>{{ __('signup.signup') }}</button>
