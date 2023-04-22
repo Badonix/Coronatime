@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerificationController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +23,12 @@ Route::middleware('localization')->group(function(){
     Route::view('/signup',"signup")->name('signup');
     Route::post("/signup", [UserController::class, 'store'])->name('signup.store');
 
-    Route::view('/confirm','confirm')->name('confirm');
+    Route::group(['prefix' => "/email/verify"], function(){
+        Route::get('/', [VerificationController::class, 'index'])->middleware(['auth'])->name('verification.notice');
+        Route::get('{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['auth','signed'])->name('verification.verify');
+        Route::get('/success', [VerificationController::class, 'success'])->name('verification.success');
+    });
+
     Route::view('/reset','reset');
     Route::view("/setpassword",'setpassword');
     Route::view('/worldwide','worldwide')->name('worldwide');
