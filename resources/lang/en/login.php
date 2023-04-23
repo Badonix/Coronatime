@@ -11,5 +11,6 @@ return [
     "forgot_password" => "Forgot password?",
     "login" => "LOG IN",
     "no_account" => "Dont have an account?",
-    'signup' => "Sign up for free"
+    'signup' => "Sign up for free",
+    'wrong' => "Credentials couldnt be verified"
 ];
