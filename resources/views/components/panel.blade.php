@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class='flex items-center gap-2'>
-            <p class='text-base font-bold'>Takeshi K.</p>
+            <p class='text-base font-bold'>{{ auth()->user()->username }}</p>
             <div class="border-l border-neutral-200 h-6"></div>
             <a href='/logout'>{{ __('panel.logout') }}</a>
         </div>
@@ -51,7 +51,7 @@
             <img @click="menu=!menu" src='{{ asset('/assets/menu-icon.png') }}' class='h-4' />
             <div x-show="menu" @click.outside="menu = false"
                 class='absolute flex flex-col right-0 -bottom-20 rounded-md px-4 py-3 bg-slate-100 items-center gap-3'>
-                <p class='text-sm font-bold'>Takeshi K.</p>
+                <p class='text-sm font-bold'>{{ auth()->user()->username }}</p>
                 <a href='/logout' class='text-sm'>{{ __('panel.logout') }}</a>
             </div>
         </div>
