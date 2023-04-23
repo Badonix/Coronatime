@@ -19,7 +19,7 @@
                 </div>
                 <div class='mt-4 flex items-center justify-between'>
                     <div class='flex items-center gap-2'>
-                        <input id='remember' type='checkbox' class='text-green-500 rounded-sm' />
+                        <input name='remember' id='remember' type='checkbox' class='text-green-500 rounded-sm' />
                         <label for='remember' class='text-sm font-semibold'>{{ __('login.remember') }}</label>
                     </div>
                     <a href='#' class='font-semibold text-sm text-blue-700'>{{ __('login.forgot_password') }}</a>

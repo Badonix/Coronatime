@@ -19,7 +19,8 @@ class LoginUserRequest extends FormRequest
     {
         return [
             'login' => "required|min:3",
-            'password' => "required"
+            'password' => "required",
+            'remember' => ""
         ];
     }
 }

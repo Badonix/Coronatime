@@ -10,8 +10,7 @@ class SessionController extends Controller
 {
     public function store(LoginUserRequest $request){
         $fieldType = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-
-        if(auth()->attempt(array($fieldType => $request['login'], 'password' => $request['password'])))
+        if(auth()->attempt(array($fieldType => $request['login'], 'password' => $request['password']), $request['remember']))
         {
             return redirect()->route('worldwide');
         }else{
