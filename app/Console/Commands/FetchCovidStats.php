@@ -13,14 +13,14 @@ class FetchCovidStats extends Command
      *
      * @var string
      */
-    protected $signature = 'app:fetch-covid-stats';
+    protected $signature = 'coronatime:fetch-covid-stats';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Update covid stats';
 
     /**
      * Execute the console command.
