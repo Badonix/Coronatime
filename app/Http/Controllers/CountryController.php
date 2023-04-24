@@ -7,10 +7,17 @@ use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $stats = CovidStatistics::all();
+        $worldwideDeaths = CovidStatistics::all()->sum('deaths');
+        $worldwideRecovered = CovidStatistics::all()->sum('recovered');
+        $worldwideConfirmed = CovidStatistics::all()->sum('confirmed');
         return view('countries', [
-            'stats' => $stats
+            'stats' => $stats,
+            'worldwideDeaths'=>$worldwideDeaths,
+            'worldwideRecovered'=>$worldwideRecovered,
+            'worldwideConfirmed'=>$worldwideConfirmed
         ]);
     }
 }

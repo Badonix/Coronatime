@@ -54,6 +54,10 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y">
+                        <td class="px-5 sm:px-10 py-4">{{ __('countries.worldwide') }}</td>
+                        <td class="px-5 sm:px-10 py-4">{{ $worldwideConfirmed }}</td>
+                        <td class="px-5 sm:px-10 py-4">{{ $worldwideDeaths }}</td>
+                        <td class="px-5 sm:px-10 py-4">{{ $worldwideRecovered }}</td>
                         @foreach ($stats as $stat)
                             <x-country-row :country="$stat['country']" :confirmed="$stat['confirmed']" :death="$stat['deaths']" :recovered="$stat['recovered']" />
                         @endforeach
