@@ -54,30 +54,9 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y">
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
-                        <x-country-row />
+                        @foreach ($stats as $stat)
+                            <x-country-row :country="$stat['country']" :confirmed="$stat['confirmed']" :death="$stat['deaths']" :recovered="$stat['recovered']" />
+                        @endforeach
                     </tbody>
                 </table>
             </div>

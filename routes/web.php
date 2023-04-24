@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
@@ -50,7 +51,7 @@ Route::middleware('localization')->group(function(){
     
     Route::view('/reset-password-sent', 'auth.confirm')->name('reset.sent');
     Route::get('/worldwide',[WorldwideController::class, 'index'])->name('worldwide')->middleware('auth');
-    Route::view('/countries','countries')->name('countries')->middleware('auth');
+    Route::get('/countries',[CountryController::class, 'index'])->name('countries')->middleware('auth');
     Route::view('/reseted', 'reseted')->name('reset.success');
 });
 
