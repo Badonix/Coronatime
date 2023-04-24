@@ -27,19 +27,24 @@ class FetchCovidStats extends Command
      */
     public function handle()
     {
-        $countryCodes = Http::get('https://devtest.ge/countries')->json(); 
+        $countryCodes = Http::get('https://devtest.ge/countries')->json();
 
-        foreach($countryCodes as $countryCode){
+        foreach($countryCodes as $countryCode) {
             $response = Http::post('https://devtest.ge/get-country-statistics', [
                 'code' => $countryCode['code']
             ]);
-            
+
             $stats = $response->json();
             $stats['country'] = json_encode($countryCode['name']);
 
             unset($stats['id']);
 
-            CovidStatistics::updateOrCreate($stats);
+            $existingStats = CovidStatistics::where('code', $stats['code'])->first();
+            if ($existingStats) {
+                $existingStats->update($stats);
+            } else {
+                CovidStatistics::create($stats);
+            }
         }
     }
 }

@@ -8,7 +8,7 @@
                     <div class='flex flex-1 flex-col items-center gap-2'>
                         <p class='text-center font-medium text-sm lg:text-xl'>{{ __('worldwide.new_cases') }}
                         </p>
-                        <p class='text-blue-700 text-2xl lg:text-4xl font-black'>715,523</p>
+                        <p class='text-blue-700 text-2xl lg:text-4xl font-black'>{{ number_format($confirmed) }}</p>
                     </div>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                     <img class='w-24 flex-shrink-0' src="{{ asset('/assets/recovered-graph.png') }}" />
                     <div class='flex flex-col items-center gap-2'>
                         <p class='font-medium text-sm lg:text-xl'>{{ __('worldwide.recovered') }}</p>
-                        <p class='text-green-500 text-2xl lg:text-4xl font-black'>72,005</p>
+                        <p class='text-green-500 text-2xl lg:text-4xl font-black'>{{ number_format($recovered) }}</p>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <img class='w-24 flex-shrink-0' src="{{ asset('/assets/death-graph.png') }}" />
                     <div class='flex flex-col items-center gap-2'>
                         <p class='font-medium text-sm lg:text-xl'>{{ __('worldwide.death') }}</p>
-                        <p class='text-yellow-400 text-2xl lg:text-4xl font-black'>8,332</p>
+                        <p class='text-yellow-400 text-2xl lg:text-4xl font-black'>{{ number_format($deaths) }}</p>
                     </div>
                 </div>
             </div>
