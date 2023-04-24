@@ -2,11 +2,12 @@
 
 return [
     'required' => "The :attribute field is required",
-
+    'email_not_found' => "We can't find a user with that email address",
     'attributes' => [
         'username' => "Username",
         'email' => "Email",
-        'password' => "Password"
+        'password' => "Password",
+        'login' => "Username"
     ],
     'custom' => [
         'username' => [

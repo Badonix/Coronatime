@@ -2,11 +2,12 @@
 
 return [
     'required' => ":attribute აუცილებელია",
-
+    'email_not_found' => "მოცემული ელ-ფოსტით მომხარებელი არ მოიძებნება",
     'attributes' => [
         'username' => "სახელი",
         'email' => "ელფოსტა",
-        'password' => "პაროლი"
+        'password' => "პაროლი",
+        'login' => "სახელი"
     ],
     'custom' => [
         'username' => [

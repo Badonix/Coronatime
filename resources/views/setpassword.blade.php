@@ -11,11 +11,14 @@
                 <h2 class='text-2xl font-black'>{{ __('reset.title') }}</h2>
                 <div class='w-full'>
                     <x-form.label>{{ __('reset.password') }}</x-form.label>
-                    <x-form.input name='password' placeholder="{{ __('reset.password_placeholder') }}" />
+                    <x-form.input type='password' name='password'
+                        placeholder="{{ __('reset.password_placeholder') }}" />
+                    <x-form.error name='password' />
                 </div>
                 <div class='w-full'>
                     <x-form.label>{{ __('reset.repeat') }}</x-form.label>
-                    <x-form.input name='password_confirmation' placeholder="{{ __('reset.repeat') }}" />
+                    <x-form.input type='password' name='password_confirmation' placeholder="{{ __('reset.repeat') }}" />
+                    <x-form.error name='password_confirmation' />
                 </div>
             </div>
             <button type='submit'

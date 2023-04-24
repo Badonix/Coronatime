@@ -10,6 +10,7 @@
                 <div class='w-full'>
                     <x-form.label>{{ __('reset.email') }}</x-form.label>
                     <x-form.input name='email' placeholder="{{ __('reset.placeholder') }}" />
+                    <x-form.error name='email' />
                 </div>
             </div>
             <button type='submit'

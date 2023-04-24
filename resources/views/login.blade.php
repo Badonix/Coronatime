@@ -11,11 +11,14 @@
                 <div class='mt-6 lg:mt-4'>
                     <x-form.label>{{ __('login.username') }}</x-form.label>
                     <x-form.input name='login' placeholder="{{ __('login.username_placeholder') }}" />
+                    <x-form.error name='login' />
                 </div>
                 <div class='mt-6 lg:mt-4'>
                     <x-form.label>{{ __('login.password') }}</x-form.label>
                     <x-form.input name='password' type='password'
                         placeholder="{{ __('login.password_placeholder') }}" />
+                    <x-form.error name='password' />
+
                 </div>
                 <div class='mt-4 flex items-center justify-between'>
                     <div class='flex items-center gap-2'>
