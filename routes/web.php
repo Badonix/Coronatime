@@ -50,7 +50,7 @@ Route::middleware('localization')->group(function(){
     Route::view('/reset-password-sent', 'auth.confirm')->name('reset.sent');
     Route::view('/worldwide','worldwide')->name('worldwide')->middleware('auth');
     Route::view('/countries','countries')->name('countries')->middleware('auth');
-    Route::view('/reseted', 'reseted');
+    Route::view('/reseted', 'reseted')->name('reset.success');
 });
 
 Route::get('/setlocale/{locale}', function($locale){
