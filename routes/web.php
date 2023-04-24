@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,11 +37,20 @@ Route::middleware('localization')->group(function(){
         Route::get('/success', [VerificationController::class, 'success'])->name('verification.success');
     });
 
-    Route::view('/reset','reset');
-    Route::view("/setpassword",'setpassword');
+    Route::view('/forgot-password','reset')->middleware('guest')->name('password.request');
+    Route::post('/forgot-password', [PasswordResetController::class, 'send'])->middleware('guest')->name('password.email');
+
+    Route::get("/reset-password/{token}", function (Request $request, string $token){
+        $email = $request->query('email');
+        return view('setpassword', ['token' => $token, 'email' => $email]);
+    })->middleware('guest')->name('password.reset');
+
+    Route::post('/reset-password', [PasswordResetController::class, 'reset'])->middleware('guest')->name('password.update');
+    
+    Route::view('/reset-password-sent', 'auth.confirm')->name('reset.sent');
     Route::view('/worldwide','worldwide')->name('worldwide')->middleware('auth');
     Route::view('/countries','countries')->name('countries')->middleware('auth');
-    Route::view('/reseted', 'reseted');
+    Route::view('/reseted', 'reseted')->name('reset.success');
 });
 
 Route::get('/setlocale/{locale}', function($locale){

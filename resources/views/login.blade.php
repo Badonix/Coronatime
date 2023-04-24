@@ -11,18 +11,22 @@
                 <div class='mt-6 lg:mt-4'>
                     <x-form.label>{{ __('login.username') }}</x-form.label>
                     <x-form.input name='login' placeholder="{{ __('login.username_placeholder') }}" />
+                    <x-form.error name='login' />
                 </div>
                 <div class='mt-6 lg:mt-4'>
                     <x-form.label>{{ __('login.password') }}</x-form.label>
                     <x-form.input name='password' type='password'
                         placeholder="{{ __('login.password_placeholder') }}" />
+                    <x-form.error name='password' />
+
                 </div>
                 <div class='mt-4 flex items-center justify-between'>
                     <div class='flex items-center gap-2'>
                         <input name='remember' id='remember' type='checkbox' class='text-green-500 rounded-sm' />
                         <label for='remember' class='text-sm font-semibold'>{{ __('login.remember') }}</label>
                     </div>
-                    <a href='#' class='font-semibold text-sm text-blue-700'>{{ __('login.forgot_password') }}</a>
+                    <a href='{{ route('password.request') }}'
+                        class='font-semibold text-sm text-blue-700'>{{ __('login.forgot_password') }}</a>
                 </div>
                 @error('wrong')
                     <p class='text-red-600 mt-2 text-sm'>{{ $message }}</p>
