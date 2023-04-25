@@ -1,6 +1,7 @@
 <x-layout>
     <section class='flex justify-center lg:justify-between  h-full'>
-        <div class='lg:flex-1 px-4 py-6 lg:px-24 lg:py-10 flex flex-col justify-start lg:justify-start'>
+        <div
+            class='h-full overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-400 lg:flex-1 px-4 py-6 lg:px-24 lg:py-10 flex flex-col justify-start lg:justify-start'>
             <img src="{{ asset('assets/logo.png') }}" class='w-36' />
             <div class='mt-10 lg:mt-16'>
                 <h2 class='font-bold lg:text-2xl text-xl lg:mt-0'>{{ __('signup.title') }}</h2>

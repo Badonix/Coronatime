@@ -9,6 +9,7 @@ module.exports = {
         extend: {
             minWidth: {
                 24: "24px",
+                8: "8px",
             },
             maxWidth: {
                 24: "24px",
