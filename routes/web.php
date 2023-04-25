@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\WorldwideController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -48,8 +50,8 @@ Route::middleware('localization')->group(function(){
     Route::post('/reset-password', [PasswordResetController::class, 'reset'])->middleware('guest')->name('password.update');
     
     Route::view('/reset-password-sent', 'auth.confirm')->name('reset.sent');
-    Route::view('/worldwide','worldwide')->name('worldwide')->middleware('auth');
-    Route::view('/countries','countries')->name('countries')->middleware('auth');
+    Route::get('/worldwide',[WorldwideController::class, 'index'])->name('worldwide')->middleware('auth');
+    Route::get('/countries',[CountryController::class, 'index'])->name('countries')->middleware('auth');
     Route::view('/reseted', 'reseted')->name('reset.success');
 });
 

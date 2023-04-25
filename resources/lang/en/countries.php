@@ -6,5 +6,6 @@ return [
     'death' => "Death",
     'location' => "Location",
     'panel_title' => 'Statistics by country',
-    'search_placeholder' => "Search by country"
+    'search_placeholder' => "Search by country",
+    'worldwide' => "Worldwide"
 ];
