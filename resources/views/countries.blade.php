@@ -3,9 +3,11 @@
 
         <div class='relative mt-10'>
             <img src="{{ asset('/assets/search.png') }}" class='w-5 absolute top-1/2 transform -translate-y-1/2 left-6' />
-            <input type='text'
-                class='py-4 text-sm text-zinc-500 px-14 rounded-lg border-transparent focus:border-transparent focus:ring-0 sm:outline-2 sm:border-neutral-200 border'
-                placeholder="{{ __('countries.search_placeholder') }}" />
+            <form action="#" method="GET">
+                <input type='text' name='search' value="{{ request('search') }}"
+                    class='py-4 text-sm text-zinc-500 px-14 rounded-lg border-transparent focus:border-transparent focus:ring-0 sm:outline-2 sm:border-neutral-200 border'
+                    placeholder="{{ __('countries.search_placeholder') }}" />
+            </form>
         </div>
 
         <div class='pb-10'>
