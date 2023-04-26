@@ -2,7 +2,7 @@
 <nav class='px-6 py-4 lg:px-28 lg:py-5 flex items-center justify-between'>
     <img src="{{ asset('assets/landing-logo.png') }}" class='w-32 sm:w-40' />
     <div class='items-center gap-12 hidden sm:flex'>
-        <div x-data="{ open: false }" class='relative'>
+        <div x-cloak x-data="{ open: false }" class='relative'>
             <div @click="open=!open" class='cursor-pointer flex items-center'>
                 <p class='text-base font-normal'>{{ App::getLocale() }}</p>
                 <img src="{{ asset('/assets/dropdown-icon.png') }}" class='w-5 h-5' />
@@ -29,7 +29,7 @@
 
 
     <div class='sm:hidden flex items-center gap-12 relative'>
-        <div x-data="{ open: false }" class='relative'>
+        <div x-cloak x-data="{ open: false }" class='relative'>
             <div @click="open=!open" class='cursor-pointer flex items-center'>
                 <p class='text-base font-normal'>{{ App::getLocale() }}</p>
                 <img src="{{ asset('/assets/dropdown-icon.png') }}" class='w-5 h-5' />
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div x-data="{ menu: false }">
+        <div x-cloak x-data="{ menu: false }">
             <img @click="menu=!menu" src='{{ asset('/assets/menu-icon.png') }}' class='h-4' />
             <div x-show="menu" @click.outside="menu = false"
                 class='absolute flex flex-col right-0 -bottom-20 rounded-md px-4 py-3 bg-slate-100 items-center gap-3'>
