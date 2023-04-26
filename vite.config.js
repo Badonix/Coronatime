@@ -8,13 +8,4 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    build: {
-        outDir: "public/js",
-        assetsDir: "assets/js",
-        manifest: true,
-        minify: "terser",
-    },
-    optimizeDeps: {
-        include: ["alpinejs"],
-    },
 });
