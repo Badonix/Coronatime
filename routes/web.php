@@ -30,17 +30,21 @@ Route::middleware('localization')->group(function(){
         Route::view('/signup',"signup")->name('signup');
         Route::post("/signup", [UserController::class, 'store'])->name('signup.store');
     });
+    Route::get('/logout', [SessionController::class, 'destroy'])->middleware(['auth'])->name('logout');
     
-    Route::get('/logout', [SessionController::class, 'destroy'])->name('logout');
 
     Route::group(['prefix' => "/email/verify"], function(){
-        Route::get('/', [VerificationController::class, 'index'])->middleware(['auth'])->name('verification.notice');
-        Route::get('{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['auth','signed'])->name('verification.verify');
+        Route::group(['middleware' => "auth"], function(){
+            Route::get('/', [VerificationController::class, 'index'])->name('verification.notice');
+            Route::get('{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['signed'])->name('verification.verify');
+        });
         Route::get('/success', [VerificationController::class, 'success'])->name('verification.success');
     });
 
-    Route::view('/forgot-password','reset')->middleware('guest')->name('password.request');
-    Route::post('/forgot-password', [PasswordResetController::class, 'send'])->middleware('guest')->name('password.email');
+    Route::group(['middleware' => 'guest', 'prefix' => "forgot-password"], function(){
+        Route::post('/', [PasswordResetController::class, 'send'])->name('password.email');
+        Route::view('/','reset')->name('password.request');
+    });
 
     Route::get("/reset-password/{token}", function (Request $request, string $token){
         $email = $request->query('email');
@@ -50,9 +54,12 @@ Route::middleware('localization')->group(function(){
     Route::post('/reset-password', [PasswordResetController::class, 'reset'])->middleware('guest')->name('password.update');
     
     Route::view('/reset-password-sent', 'auth.confirm')->name('reset.sent');
-    Route::get('/worldwide',[WorldwideController::class, 'index'])->name('worldwide')->middleware('auth');
-    Route::get('/countries',[CountryController::class, 'index'])->name('countries')->middleware('auth');
     Route::view('/reseted', 'reseted')->name('reset.success');
+    
+    Route::group(['middleware' => 'auth'], function(){
+        Route::get('/worldwide',[WorldwideController::class, 'index'])->name('worldwide');
+        Route::get('/countries',[CountryController::class, 'index'])->name('countries');
+    });
 });
 
 Route::get('/setlocale/{locale}', function($locale){
