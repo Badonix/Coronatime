@@ -59,11 +59,11 @@ class AuthTest extends TestCase
         $username = "admin";
         $password = '1234';
 
-        $user = new User();
-        $user->username = $username;
-        $user->email = $email;
-        $user->password = bcrypt($password);
-        $user->save();
+        User::factory()->create([
+            'username' => $username,
+            'email' => $email,
+            'password' => bcrypt($password),
+        ]);
 
         $response = $this->post('login', [
             'login' => $email,

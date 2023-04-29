@@ -19,11 +19,11 @@ class LogoutTest extends TestCase
         $username = "USER1049";
         $password = '1234';
 
-        $user = new User();
-        $user->username = $username;
-        $user->email = $email;
-        $user->password = bcrypt($password);
-        $user->save();
+        $user = User::factory()->create([
+            'email' => $email,
+            'username' => $username,
+            'password' => bcrypt($password)
+        ]);
 
         $this->actingAs($user);
 

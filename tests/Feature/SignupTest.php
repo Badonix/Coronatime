@@ -82,11 +82,11 @@ class SignupTest extends TestCase
         $username = "RANDOM_NAME";
         $password = '1234';
 
-        $user = new User();
-        $user->username = $username;
-        $user->email = $email;
-        $user->password = bcrypt($password);
-        $user->save();
+        $user = User::factory()->create([
+            'email' => $email,
+            'username' => $username,
+            'password' => bcrypt($password)
+        ]);
 
         $response = $this->post('/signup', [
             'username' => 'admin',

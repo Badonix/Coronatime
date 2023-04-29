@@ -23,11 +23,11 @@ class WorldwideTest extends TestCase
         $username = "admin";
         $password = '1234';
 
-        $user = new User();
-        $user->username = $username;
-        $user->email = $email;
-        $user->password = bcrypt($password);
-        $user->save();
+        $user = User::factory()->create([
+            'email' => $email,
+            'password' => bcrypt($password),
+            'username' => $username,
+        ]);
 
         $this->user = $user;
     }
