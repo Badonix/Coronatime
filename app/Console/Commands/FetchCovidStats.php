@@ -39,6 +39,7 @@ class FetchCovidStats extends Command
 
             unset($stats['id']);
 
+
             $existingStats = CovidStatistics::where('code', $stats['code'])->first();
             if ($existingStats) {
                 $existingStats->update($stats);
@@ -46,5 +47,8 @@ class FetchCovidStats extends Command
                 CovidStatistics::create($stats);
             }
         }
+
+        $this->info('Covid stats updated successfully.');
+
     }
 }
