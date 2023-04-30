@@ -56,5 +56,5 @@ class PasswordResetTest extends TestCase
 
         $response->assertRedirect('/reset-password-sent');
     }
-
+    
 }
