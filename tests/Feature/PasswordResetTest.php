@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Tests\TestCase;
 
 class PasswordResetTest extends TestCase
@@ -55,6 +57,24 @@ class PasswordResetTest extends TestCase
         ]);
 
         $response->assertRedirect('/reset-password-sent');
+    }
+
+    public function test_password_is_reseted(){
+        $user = User::factory()->create();
+
+        $token = Password::createToken($user);
+        $password = "1234";
+        $response = $this->post('/reset-password', [
+            'token' => $token,
+            'email' => $user->email,
+            'password' => $password,
+            'password_confirmation' => $password,
+        ]);
+
+        $response->assertRedirect('/reseted')
+                 ->assertSessionHas('status', 'Your password has been reset.');
+
+        $this->assertTrue(Hash::check($password, $user->fresh()->password));
     }
     
 }
