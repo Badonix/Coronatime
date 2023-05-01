@@ -16,13 +16,13 @@ class SignupTest extends TestCase
 
     public function test_if_signup_page_is_accessable(): void
     {
-        $response = $this->get('/signup');
+        $response = $this->get(route('signup'));
         $response->assertSuccessful();
     }
 
     public function test_should_give_us_errors_when_inputs_are_not_provided()
     {
-        $response = $this->post('/signup');
+        $response = $this->post(route('signup.store'));
         $response->assertSessionHasErrors([
             'username', 'email', 'password'
         ]);
@@ -30,7 +30,7 @@ class SignupTest extends TestCase
 
     public function test_should_give_us_errors_when_email_is_not_valid()
     {
-        $response = $this->post('/signup', [
+        $response = $this->post(route('signup.store'), [
             'email' => "redberry"
         ]);
         $response->assertSessionHasErrors([
@@ -40,7 +40,7 @@ class SignupTest extends TestCase
 
     public function test_should_give_us_error_when_passwords_do_not_match()
     {
-        $response = $this->post('/signup', [
+        $response = $this->post(route('signup.store'), [
             'username' => 'admin',
             'email' => 'admin@redberry.ge',
             'password' => 'password',
@@ -53,7 +53,7 @@ class SignupTest extends TestCase
 
     public function test_should_give_us_error_when_username_is_less_than_3_characters()
     {
-        $response = $this->post('/signup', [
+        $response = $this->post(route('signup.store'), [
             'username' => 'Jo',
             'email' => 'admin@redberry.ge',
             'password' => 'password',
@@ -66,7 +66,7 @@ class SignupTest extends TestCase
 
     public function test_should_give_us_error_when_password_is_less_than_3_characters()
     {
-        $response = $this->post('/signup', [
+        $response = $this->post(route('signup.store'), [
             'username' => 'admin',
             'email' => 'admin@redberry.ge',
             'password' => 'pa',
@@ -88,7 +88,7 @@ class SignupTest extends TestCase
             'password' => bcrypt($password)
         ]);
 
-        $response = $this->post('/signup', [
+        $response = $this->post(route('signup.store'), [
             'username' => 'admin',
             'email' => 'admin@redberry.ge',
             'password' => 'password',
@@ -100,14 +100,14 @@ class SignupTest extends TestCase
     }
     
     public function test_should_redirect_us_to_confirm_email_page_after_successful_signup(){
-        $response = $this->post('/signup', [
+        $response = $this->post(route('signup.store'), [
             'username' => 'admin',
             'email' => 'admin@redberry.ge',
             'password' => 'password',
             'password_confirmation' => 'password'
         ]);
     
-        $response->assertRedirect('/email/verify');
+        $response->assertRedirect(route('verification.notice'));
     }
     
 

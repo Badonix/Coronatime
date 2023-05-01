@@ -33,8 +33,8 @@ class WorldwideTest extends TestCase
     }
 
     public function test_should_redirect_us_to_log_in_if_guest(){
-        $response = $this->get('/worldwide');
-        $response->assertRedirect('/login');
+        $response = $this->get(route('worldwide'));
+        $response->assertRedirect(route('login'));
     }
     public function test_should_show_us_worldwide_page_if_user_is_logged_in(): void
     {

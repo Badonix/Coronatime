@@ -22,7 +22,7 @@ class VerificationTest extends TestCase
             'password' => bcrypt("1234")    ,
             'username' => "admina"
         ]);
-        $response=$this->actingAs($user)->get('email/verify');
+        $response=$this->actingAs($user)->get(route('verification.notice'));
         $response->assertViewIs('auth.confirm');
     }
 
@@ -38,14 +38,14 @@ class VerificationTest extends TestCase
 
         $response = $this->actingAs($user)->get($verificationUrl);
 
-        $response->assertRedirect('/email/verify/success');
+        $response->assertRedirect(route('verification.success'));
         $this->assertNotNull($user->fresh()->email_verified_at);
     }
 
     public function test_verification_success()
     {
 
-        $response = $this->get('/email/verify/success');
+        $response = $this->get(route('verification.success'));
         $response->assertViewIs('verification.success');
     }
 }

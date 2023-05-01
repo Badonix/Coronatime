@@ -17,20 +17,20 @@ class PasswordResetTest extends TestCase
      */
     public function test_check_if_forgot_password_view_is_accessable(): void
     {
-        $response = $this->get('/forgot-password');
+        $response = $this->get(route('password.request'));
 
         $response->assertViewis('reset');
     }
 
     public function test_should_return_error_if_email_not_provided(){
-        $response = $this->post('/forgot-password');
+        $response = $this->post(route('password.email'));
 
         $response->assertSessionHasErrors([
             'email' => 'The Email field is required'
         ]);
     }
     public function test_should_return_error_if_email_is_not_valid(){
-        $response = $this->post('/forgot-password', [
+        $response = $this->post(route('password.email'), [
             'email' => "notvalidemail.com"
         ]);
         $response->assertSessionHasErrors([
@@ -39,7 +39,7 @@ class PasswordResetTest extends TestCase
     }
 
     public function test_should_give_us_error_if_email_is_not_registered(){
-        $response = $this->post('/forgot-password', [
+        $response = $this->post(route('password.email'), [
             'email' => "validbutnotindb@example.com"
         ]);
         $response->assertSessionHasErrors([
@@ -52,11 +52,11 @@ class PasswordResetTest extends TestCase
         User::factory()->create([
             'email' => $email
         ]);
-        $response = $this->post('/forgot-password', [
+        $response = $this->post(route('password.email'), [
             'email' => $email
         ]);
 
-        $response->assertRedirect('/reset-password-sent');
+        $response->assertRedirect(route('reset.sent'));
     }
 
     public function test_password_is_reseted(){
@@ -64,14 +64,14 @@ class PasswordResetTest extends TestCase
 
         $token = Password::createToken($user);
         $password = "1234";
-        $response = $this->post('/reset-password', [
+        $response = $this->post(route('password.update'), [
             'token' => $token,
             'email' => $user->email,
             'password' => $password,
             'password_confirmation' => $password,
         ]);
 
-        $response->assertRedirect('/reseted')
+        $response->assertRedirect(route('reset.success'))
                  ->assertSessionHas('status', 'Your password has been reset.');
 
         $this->assertTrue(Hash::check($password, $user->fresh()->password));

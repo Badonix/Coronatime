@@ -12,7 +12,7 @@ class AuthTest extends TestCase
     use RefreshDatabase;
 
     public function test_if_login_page_is_accessible(){
-        $response = $this->get('/login');
+        $response = $this->get(route('login'));
 
         $response->assertSuccessful();
         $response->assertViewIs('login');
@@ -20,7 +20,7 @@ class AuthTest extends TestCase
 
     public function test_auth_should_give_us_errors_if_input_is_not_provided(){
      
-        $response = $this->post('/login');
+        $response = $this->post(route('login.store'));
         $response->assertSessionHasErrors([
             'login','password' 
         ]); 
@@ -28,7 +28,7 @@ class AuthTest extends TestCase
     
     public function test_auth_should_give_us_error_if_username_is_not_provided(){
 
-        $response = $this->post('/login', [
+        $response = $this->post(route('login.store'), [
             'password' => 'P4SSW0RD'
         ]);
         $response->assertSessionHasErrors([
@@ -39,7 +39,7 @@ class AuthTest extends TestCase
 
     public function test_auth_should_give_us_error_if_password_is_not_provided(){
 
-        $response = $this->post('/login', [
+        $response = $this->post(route('login.store'), [
             'login' => 'ADMIN'
         ]);
         $response->assertSessionHasErrors(['password']);
@@ -47,7 +47,7 @@ class AuthTest extends TestCase
     }
 
     public function test_auth_should_give_us_incorrect_credentials_error_when_user_does_not_exist(){
-        $response = $this->post('/login', [
+        $response = $this->post(route('login.store'), [
             'login' => "admin",
             'password' => "password"
         ]);
@@ -69,6 +69,6 @@ class AuthTest extends TestCase
             'login' => $email,
             'password' => $password
         ]);
-        $response->assertRedirect('/worldwide');
+        $response->assertRedirect(route('worldwide'));
     }
 }
