@@ -44,4 +44,9 @@ class PasswordResetController extends Controller
                     ? redirect()->route('reset.success')->with('status', __($status))
                     : back()->withErrors(['email' => [__($status)]]);
     }
+
+    public function index(Request $request, string $token){
+        $email = $request->query('email');
+        return view('setpassword', ['token' => $token, 'email' => $email]);
+    }
 }
