@@ -7,7 +7,7 @@
             @csrf
             <div class='w-full sm:w-auto pt-24 sm:pt-0 flex flex-col gap-3 sm:gap-9 items-center'>
                 <h2 class='text-2xl font-black'>{{ __('reset.title') }}</h2>
-                <div class='w-full'>
+                <div class='sm:w-96 w-full'>
                     <x-form.label>{{ __('reset.email') }}</x-form.label>
                     <x-form.input name='email' placeholder="{{ __('reset.placeholder') }}" />
                     <x-form.error name='email' />
