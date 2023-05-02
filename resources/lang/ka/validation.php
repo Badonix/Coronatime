@@ -10,6 +10,10 @@ return [
         'login' => "სახელი"
     ],
     'custom' => [
+        'login' => [
+            'min' => ':attribute უნდა იყოს მინიმუმ 3 სიმბოლო',
+            'unique' => ':attribute უკვე დაკავებულია'
+        ],
         'username' => [
             'min' => ':attribute უნდა იყოს მინიმუმ 3 სიმბოლო',
             'unique' => ':attribute უკვე დაკავებულია'
