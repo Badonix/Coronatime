@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coronatime</title>
+    <link rel='icon' href='{{ asset('/assets/favicon.png') }}' />
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 </head>
