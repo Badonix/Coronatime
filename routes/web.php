@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
@@ -35,7 +36,7 @@ Route::middleware('localization')->group(function(){
 
     Route::group(['prefix' => "/email/verify"], function(){
         Route::group(['middleware' => "auth"], function(){
-            Route::get('/', [VerificationController::class, 'index'])->name('verification.notice');
+            Route::view('/', 'auth.confirm')->name('verification.notice');
             Route::get('{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['signed'])->name('verification.verify');
         });
         Route::get('/success', [VerificationController::class, 'success'])->name('verification.success');
@@ -46,10 +47,7 @@ Route::middleware('localization')->group(function(){
         Route::view('/','reset')->name('password.request');
     });
 
-    Route::get("/reset-password/{token}", function (Request $request, string $token){
-        $email = $request->query('email');
-        return view('setpassword', ['token' => $token, 'email' => $email]);
-    })->middleware('guest')->name('password.reset');
+    Route::get("/reset-password/{token}", [PasswordResetController::class, 'index'])->middleware('guest')->name('password.reset');
 
     Route::post('/reset-password', [PasswordResetController::class, 'reset'])->middleware('guest')->name('password.update');
     
@@ -62,7 +60,4 @@ Route::middleware('localization')->group(function(){
     });
 });
 
-Route::get('/setlocale/{locale}', function($locale){
-    session(['locale' => $locale]);
-    return back();
-})->name('setlocale');
+Route::get('/setlocale/{locale}', [LocalizationController::class, 'update'])->name('setlocale');
