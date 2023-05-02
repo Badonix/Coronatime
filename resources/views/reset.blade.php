@@ -9,8 +9,10 @@
                 <h2 class='text-2xl font-black'>{{ __('reset.title') }}</h2>
                 <div class='sm:w-96 w-full'>
                     <x-form.label>{{ __('reset.email') }}</x-form.label>
-                    <x-form.input name='email' placeholder="{{ __('reset.placeholder') }}" />
-                    <x-form.error name='email' />
+                    <div class='relative'>
+                        <x-form.input name='email' placeholder="{{ __('reset.placeholder') }}" />
+                        <x-form.error name='email' />
+                    </div>
                 </div>
             </div>
             <button type='submit'

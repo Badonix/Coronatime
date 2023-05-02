@@ -1,4 +1,4 @@
-<div class='relative w-auto mt-2'>
+<div class='relative mt-2'>
     <input
         class='w-full px-5 py-4 rounded-lg text-zinc-500 text-base border {{ $errors->has($attributes['name']) ? 'border-red-700' : ($attributes['value'] != null ? 'border-green-600' : 'border-neutral-200') }}'
         {{ $attributes }} />
