@@ -27,14 +27,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         VerifyEmail::toMailUsing(function($notifiable, $url){
             return (new MailMessage)
-                ->view('email.verify', ['url' => $url])
-                ->subject('Verify Email Address');
+                ->view('email.body', ['url' => $url, 'title' => __('email.verify_title'), 'subtitle' => __('email.verify_subtitle'), 'button' => __('email.verify_button')])
+                ->subject(__("email.verify_subject"));
         });
         ResetPassword::toMailUsing(function ($notifiable, $token) {
             $url = route('password.reset',$token).'?email='.$notifiable->getEmailForPasswordReset();
             return (new MailMessage())
-                ->subject('Password reset')
-                ->view('email.reset', compact('url'));
+                ->subject(__('email.recover_subject'))
+                ->view('email.body', ['url' => $url, 'title' => __("email.recover_title"), 'subtitle' => __('email.recover_subtitle'), 'button' => __('email.recover_button')]);
         });
     }
 }
