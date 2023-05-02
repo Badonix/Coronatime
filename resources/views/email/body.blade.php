@@ -10,15 +10,15 @@
 <div style="text-align: center; width: 100%" class='body'>
 
     <img style="width: 400px; max-width: 400px;" src="https://i.ibb.co/wSVcvXp/email-cover.png" />
-    <h1>Recover password</h1>
-    <p>click this button to recover a password</p>
+    <h1>{{ $title }}</h1>
+    <p>{{ $subtitle }}</p>
     <a style="        
     display: block;
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    background-color: #059669;
+    background-color: #22C55E;
     color: #ffffff;
     font-weight: 700;
     text-align: center;
@@ -29,7 +29,7 @@
     text-decoration: none;
     margin:0 auto;
     "
-        href="{{ $url }}">RECOVER PASSWORD</a>
+        href="{{ $url }}">{{ $button }}</a>
 </div>
 
 </html>
