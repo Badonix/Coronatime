@@ -54,7 +54,7 @@ Route::middleware('localization')->group(function(){
     Route::view('/reset-password-sent', 'auth.confirm')->name('reset.sent');
     Route::view('/reseted', 'reseted')->name('reset.success');
     
-    Route::group(['middleware' => 'auth'], function(){
+    Route::group(['middleware' => ['auth', 'verified']], function(){
         Route::get('/worldwide',[WorldwideController::class, 'index'])->name('worldwide');
         Route::get('/countries',[CountryController::class, 'index'])->name('countries');
     });
