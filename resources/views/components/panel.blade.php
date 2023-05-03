@@ -1,6 +1,6 @@
 @props(['name', 'title'])
 <nav class='px-6 py-4 lg:px-28 lg:py-5 flex items-center justify-between'>
-    <img src="{{ asset('assets/landing-logo.png') }}" class='w-32 sm:w-40' />
+    <img src="{{ asset('assets/logo.png') }}" class='w-32 sm:w-40' />
     <div class='items-center gap-12 hidden sm:flex'>
         <div x-cloak x-data="{ open: false }" class='relative'>
             <div @click="open=!open" class='cursor-pointer flex items-center'>
