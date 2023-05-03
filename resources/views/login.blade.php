@@ -12,7 +12,8 @@
                 <div class='mt-6 lg:mt-7'>
                     <x-form.label>{{ __('login.username') }}</x-form.label>
                     <div class='relative'>
-                        <x-form.input name='login' placeholder="{{ __('login.username_placeholder') }}" />
+                        <x-form.input :value="old('login')" name='login'
+                            placeholder="{{ __('login.username_placeholder') }}" />
                         <x-form.error name='login' />
                     </div>
                 </div>

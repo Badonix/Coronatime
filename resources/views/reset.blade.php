@@ -10,7 +10,7 @@
                 <div class='sm:w-96 w-full'>
                     <x-form.label>{{ __('reset.email') }}</x-form.label>
                     <div class='relative'>
-                        <x-form.input name='email' placeholder="{{ __('reset.placeholder') }}" />
+                        <x-form.input :value="old('email')" name='email' placeholder="{{ __('reset.placeholder') }}" />
                         <x-form.error name='email' />
                     </div>
                 </div>
