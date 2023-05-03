@@ -17,9 +17,9 @@ class CountryController extends Controller
             $stats->where('country->'.$locale, 'like', '%'.request('search').'%');
         }
         if(request('sort_by')) {
-            if(request('sort_by') == "country"){
+            if(request('sort_by') == "country") {
                 $stats->orderBy(request('sort_by') . "->" . $locale, request('sort_method'));
-            }else{
+            } else {
                 $stats->orderBy(request('sort_by'), request('sort_method'));
             }
         }

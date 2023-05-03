@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function store(RegisterUserRequest $request){
+    public function store(RegisterUserRequest $request)
+    {
         $user = new User();
         $user->username = $request->input('username');
         $user->email = $request->input('email');
@@ -20,7 +21,7 @@ class UserController extends Controller
         event(new Registered($user));
 
         auth()->login($user);
-    
+
         return redirect()->route('verification.notice');
     }
 }

@@ -8,12 +8,12 @@ use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
 {
-    public function store(LoginUserRequest $request){
+    public function store(LoginUserRequest $request)
+    {
         $fieldType = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        if(auth()->attempt(array($fieldType => $request['login'], 'password' => $request['password']), $request['remember']))
-        {
+        if(auth()->attempt(array($fieldType => $request['login'], 'password' => $request['password']), $request['remember'])) {
             return redirect()->route('worldwide');
-        }else{
+        } else {
             throw ValidationException::withMessages([
                 'wrong' => __('login.wrong')
             ]);

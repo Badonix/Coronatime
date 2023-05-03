@@ -11,22 +11,25 @@ class AuthTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_if_login_page_is_accessible(){
+    public function test_if_login_page_is_accessible()
+    {
         $response = $this->get(route('login'));
 
         $response->assertSuccessful();
         $response->assertViewIs('login');
     }
 
-    public function test_auth_should_give_us_errors_if_input_is_not_provided(){
-     
+    public function test_auth_should_give_us_errors_if_input_is_not_provided()
+    {
+
         $response = $this->post(route('login.store'));
         $response->assertSessionHasErrors([
-            'login','password' 
-        ]); 
+            'login','password'
+        ]);
     }
-    
-    public function test_auth_should_give_us_error_if_username_is_not_provided(){
+
+    public function test_auth_should_give_us_error_if_username_is_not_provided()
+    {
 
         $response = $this->post(route('login.store'), [
             'password' => 'P4SSW0RD'
@@ -37,7 +40,8 @@ class AuthTest extends TestCase
         $response->assertSessionDoesntHaveErrors(['password']);
     }
 
-    public function test_auth_should_give_us_error_if_password_is_not_provided(){
+    public function test_auth_should_give_us_error_if_password_is_not_provided()
+    {
 
         $response = $this->post(route('login.store'), [
             'login' => 'ADMIN'
@@ -46,7 +50,8 @@ class AuthTest extends TestCase
         $response->assertSessionDoesntHaveErrors(['login']);
     }
 
-    public function test_auth_should_give_us_incorrect_credentials_error_when_user_does_not_exist(){
+    public function test_auth_should_give_us_incorrect_credentials_error_when_user_does_not_exist()
+    {
         $response = $this->post(route('login.store'), [
             'login' => "admin",
             'password' => "password"
@@ -54,7 +59,8 @@ class AuthTest extends TestCase
         $response->assertSessionHasErrors(['wrong']);
     }
 
-    public function test_auth_should_redirect_to_worldwide_page_after_successfull_login(){
+    public function test_auth_should_redirect_to_worldwide_page_after_successfull_login()
+    {
         $email = "admin@redberry.ge";
         $username = "admin";
         $password = '1234';
