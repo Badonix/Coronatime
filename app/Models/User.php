@@ -13,7 +13,10 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, CanResetPassword;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
+    use CanResetPassword;
 
     /**
      * The attributes that are mass assignable.

@@ -22,14 +22,16 @@ class PasswordResetTest extends TestCase
         $response->assertViewis('reset');
     }
 
-    public function test_should_return_error_if_email_not_provided(){
+    public function test_should_return_error_if_email_not_provided()
+    {
         $response = $this->post(route('password.email'));
 
         $response->assertSessionHasErrors([
             'email' => 'The Email field is required'
         ]);
     }
-    public function test_should_return_error_if_email_is_not_valid(){
+    public function test_should_return_error_if_email_is_not_valid()
+    {
         $response = $this->post(route('password.email'), [
             'email' => "notvalidemail.com"
         ]);
@@ -38,7 +40,8 @@ class PasswordResetTest extends TestCase
         ]);
     }
 
-    public function test_should_give_us_error_if_email_is_not_registered(){
+    public function test_should_give_us_error_if_email_is_not_registered()
+    {
         $response = $this->post(route('password.email'), [
             'email' => "validbutnotindb@example.com"
         ]);
@@ -47,7 +50,8 @@ class PasswordResetTest extends TestCase
         ]);
     }
 
-    public function test_should_redirect_us_to_success_page_if_email_is_sent(){
+    public function test_should_redirect_us_to_success_page_if_email_is_sent()
+    {
         $email = "validemail@example.com";
         User::factory()->create([
             'email' => $email
@@ -59,7 +63,8 @@ class PasswordResetTest extends TestCase
         $response->assertRedirect(route('reset.sent'));
     }
 
-    public function test_password_is_reseted(){
+    public function test_password_is_reseted()
+    {
         $user = User::factory()->create();
 
         $token = Password::createToken($user);
@@ -76,5 +81,5 @@ class PasswordResetTest extends TestCase
 
         $this->assertTrue(Hash::check($password, $user->fresh()->password));
     }
-    
+
 }

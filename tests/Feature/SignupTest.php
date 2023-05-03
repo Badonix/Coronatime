@@ -77,7 +77,8 @@ class SignupTest extends TestCase
         ]);
     }
 
-    public function test_should_give_us_error_when_email_already_exists(){
+    public function test_should_give_us_error_when_email_already_exists()
+    {
         $email = "admin@redberry.ge";
         $username = "RANDOM_NAME";
         $password = '1234';
@@ -98,17 +99,18 @@ class SignupTest extends TestCase
             'email' => "The Email has already been taken."
         ]);
     }
-    
-    public function test_should_redirect_us_to_confirm_email_page_after_successful_signup(){
+
+    public function test_should_redirect_us_to_confirm_email_page_after_successful_signup()
+    {
         $response = $this->post(route('signup.store'), [
             'username' => 'admin',
             'email' => 'admin@redberry.ge',
             'password' => 'password',
             'password_confirmation' => 'password'
         ]);
-    
+
         $response->assertRedirect(route('verification.notice'));
     }
-    
+
 
 }

@@ -44,12 +44,14 @@ class CountriesTest extends TestCase
         ]);
     }
 
-    public function test_should_redirect_to_login_page_if_not_logged_in(){
+    public function test_should_redirect_to_login_page_if_not_logged_in()
+    {
         $response = $this->get(route('countries'));
         $response->assertRedirect(route('login'));
     }
 
-    public function test_should_show_countries_page_if_logged_in(){
+    public function test_should_show_countries_page_if_logged_in()
+    {
         $response = $this->actingAs($this->user)->get('/countries');
         $response->assertViewIs('countries');
     }
@@ -116,8 +118,9 @@ class CountriesTest extends TestCase
         $stats = $response->original->getData()['stats'];
         $this->assertGreaterThan($stats[0]['confirmed'], $stats[1]['confirmed']);
     }
-    
-    public function test_country_controller_returns_correct_data_when_sorting_alphabetically_descending(){
+
+    public function test_country_controller_returns_correct_data_when_sorting_alphabetically_descending()
+    {
         $response = $this->actingAs($this->user)->get(route('countries', [
             'search' => 'Ge',
             'sort_by' => 'country',
@@ -128,7 +131,8 @@ class CountriesTest extends TestCase
         $this->assertEquals('Georgia', json_decode($stats[1]['country'])->en);
         $this->assertEquals('Germany', json_decode($stats[0]['country'])->en);
     }
-    public function test_country_controller_returns_correct_data_when_sorting_alphabetically_ascending(){
+    public function test_country_controller_returns_correct_data_when_sorting_alphabetically_ascending()
+    {
         $response = $this->actingAs($this->user)->get(route('countries', [
             'search' => 'Ge',
             'sort_by' => 'country',
