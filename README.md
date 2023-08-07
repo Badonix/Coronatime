@@ -2,6 +2,7 @@
   <h1 style="position:relative; top: -6px">Coronatime</h1>
 </div>
 
+
 ---
 
 **Coronatime** is a COVID-19 statistics app that allows you to view worldwide and country-specific data. With features like login, logout, registration, email verification, and password reset, you can access the latest COVID-19 statistics with ease. You can also sort countries and search for specific information, all from one app.
